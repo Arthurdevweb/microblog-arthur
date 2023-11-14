@@ -11,6 +11,7 @@
 
 ### INSERT na tabela de usuários
 
+```sql
  INSERT INTO usuarios (nome, email, senha, tipo) 
  VALUES(
     'Arthur Augusto T. Arruda',
@@ -18,8 +19,9 @@
     'palmeiras123',
     'admin'
  );
+ ```
 
-
+```sql
  INSERT INTO usuarios(nome, email, senha, tipo)
  VALUES(
     'Fulano da Silva',
@@ -42,35 +44,38 @@
     'marreta',
     'editor'
    );
-
+```
 
 
 ### SELECT na tabela de usuários
 
+```sql
 SELECT * FROM usuarios;
 
 SELECT nome, email FROM usuarios;
 
-SELECT nome, email FROM usuarios WHERE tipo = 'admin'; 
+SELECT nome, email FROM usuarios WHERE tipo = 'admin';
+```
 
 
 ### UPDATE em dados na tabela de usuários
 
+```sql
 UPDATE usuarios SET tipo = 'admin' WHERE id = 4;
 
 -- Obs: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
-
+```
 
 ### DELETE em dados de tabela de usuarios
-
+```sql
 DELETE FROM usuarios WHERE id = 2;
 
 -- Obs: NUNCA ESQUECA DE PASSAR UMA CONDIÇÃO PARA O DELETE!
-
+```
 
 
 ### INSERT na tabela de noticias 
-
+```sql
 INSERT INTO noticias(titulo, texto, resumo, imagem, usuario_id)
 VALUES(
     'Descoberto oxigênio em Vênus',
@@ -79,8 +84,9 @@ VALUES(
     'venus.jpg',
     1
 );
+```
 
-
+```sql
 INSERT INTO noticias(titulo, texto, resumo, imagem, usuario_id)
 VALUES(
     'Nova versão do VScode',
@@ -90,9 +96,9 @@ VALUES(
     4
     
 );
+```
 
-
-
+```sql
 INSERT INTO noticias(titulo, texto, resumo, imagem, usuario_id)
 VALUES(
     'Onda de calor no Brasil',
@@ -102,13 +108,13 @@ VALUES(
     1
     
 );
-
+```
 
 ### objetivo: consulta que mostre a data e o titulo da noticia e o nome do autor desta noticia.
 
 #### SELECT COM JOIN (consulta com junção de tabelas)
 
-
+```sql
 SELECT 
 
 -- Especificamos o nome da coluna junto com o nome da tabela SELECT
@@ -125,4 +131,4 @@ FROM noticias JOIN usuarios
 -- com a chave primária (PK)
 
 ON noticias.usuario_id = usuarios.id
-
+```
