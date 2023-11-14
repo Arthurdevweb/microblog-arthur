@@ -2,7 +2,7 @@
 
 ## Criar banco de dados
 
-CREATE DATABASE microblog_tiago CHARACTER SET utf8mb4;
+CREATE DATABASE microblog_arthur CHARACTER SET utf8mb4;
 
 ## Criar tabela de usuários
 
@@ -22,7 +22,7 @@ CREATE TABLE noticias(
     titulo VARCHAR(150) NOT NULL,
     texto TEXT NOT NULL,
     resumo TEXT NOT NULL,
-    imagem TEXT NOT NULL,
+    imagem VARCHAR(45) NOT NULL,
     usuario_id INT NOT NULL
 );
 
