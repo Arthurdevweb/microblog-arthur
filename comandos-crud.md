@@ -58,4 +58,71 @@ SELECT nome, email FROM usuarios WHERE tipo = 'admin';
 
 UPDATE usuarios SET tipo = 'admin' WHERE id = 4;
 
--- Obs: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE
+-- Obs: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
+
+
+### DELETE em dados de tabela de usuarios
+
+DELETE FROM usuarios WHERE id = 2;
+
+-- Obs: NUNCA ESQUECA DE PASSAR UMA CONDIÇÃO PARA O DELETE!
+
+
+
+### INSERT na tabela de noticias 
+
+INSERT INTO noticias(titulo, texto, resumo, imagem, usuario_id)
+VALUES(
+    'Descoberto oxigênio em Vênus',
+    'Recentemente a sonda XYZ encontrou traços de oxigênio no planeta',
+    'Nesta manhã do dia tal, foi feita uma das maiores descobertas feita pelo ser humano',
+    'venus.jpg',
+    1
+);
+
+
+INSERT INTO noticias(titulo, texto, resumo, imagem, usuario_id)
+VALUES(
+    'Nova versão do VScode',
+    'Recentemente o VScode foi atualizado...',
+    'A microsoft trouxe recursos de inteligência artificial',
+    'vscode.jpg',
+    4
+    
+);
+
+
+
+INSERT INTO noticias(titulo, texto, resumo, imagem, usuario_id)
+VALUES(
+    'Onda de calor no Brasil',
+    'Temperaturas muito acima da média',
+    'Efeitos do aquecimento global estão prejudicando a vida...',
+    'sol.jpg',
+    1
+    
+);
+
+
+### objetivo: consulta que mostre a data e o titulo da noticia e o nome do autor desta noticia.
+
+#### SELECT COM JOIN (consulta com junção de tabelas)
+
+
+SELECT 
+
+-- Especificamos o nome da coluna junto com o nome da tabela SELECT
+
+       noticias.data, 
+       noticias.titulo, 
+       usuarios.nome
+
+-- Especificamos quais tabelas serão "juntadas/combinadas" FROM noticias JOIN usuarios
+FROM noticias JOIN usuarios 
+
+
+-- Fazemos uma comparação entre a chave estrangeira (FK)
+-- com a chave primária (PK)
+
+ON noticias.usuario_id = usuarios.id
+
