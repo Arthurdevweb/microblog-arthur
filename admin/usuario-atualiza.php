@@ -1,6 +1,14 @@
 <?php 
+require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
+
+$id = $_GET['id'];
+
+//Chamando a função e aguardando o retorno dela
+$dados = lerUmUsuario($conexao, $id);
 ?>
+
+<pre><?=var_dump($dados)?></pre>
 
 
 <div class="row">
