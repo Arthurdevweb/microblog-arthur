@@ -1,6 +1,11 @@
 <?php 
+require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
+
+/* Chamamos a função lerUsuarios que ao terminar de fazer os processis, ela retorna os dados do resultado da comnsulta/query */
+$dados = lerUsuarios($conexao);
 ?>
+<pre><?=var_dump($dados)?></pre>
 
 
 <div class="row">
