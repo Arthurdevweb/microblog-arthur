@@ -2,10 +2,9 @@
 require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
 
-/* Chamamos a função lerUsuarios que ao terminar de fazer os processis, ela retorna os dados do resultado da comnsulta/query */
-$dados = lerUsuarios($conexao);
+/* Chamamos a função lerUsuarios que ao terminar de fazer os processis, ela retorna os dados dos usuarios */
+$listaDeUsuarios = lerUsuarios($conexao);
 ?>
-<pre><?=var_dump($dados)?></pre>
 
 
 <div class="row">
@@ -34,24 +33,24 @@ $dados = lerUsuarios($conexao);
 				</thead>
 
 				<tbody>
-
+<?php foreach($listaDeUsuarios as $usuario){?>
 					<tr>
-						<td> Nome... </td>
-						<td> E-mail... </td>
-						<td> Tipo... </td>
+						<td> <?= $usuario['nome']?> </td>
+						<td> <?= $usuario['email']?></td>
+						<td> <?= $usuario['tipo']?></td>
 						<td class="text-center">
 							<a class="btn btn-warning" 
-							href="usuario-atualiza.php">
+							href="usuario-atualiza.php?id=<?=$usuario['id']?>">
 							<i class="bi bi-pencil"></i> Atualizar
 							</a>
 						
 							<a class="btn btn-danger excluir" 
-							href="usuario-exclui.php">
+							href="usuario-exclui.php?id=<?=$usuario['id']?>">
 							<i class="bi bi-trash"></i> Excluir
 							</a>
 						</td>
 					</tr>
-
+<?php }?>
 				</tbody>                
 			</table>
 	</div>
