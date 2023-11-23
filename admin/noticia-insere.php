@@ -1,5 +1,5 @@
 <?php 
-require_once "../inc/funcoes-noticias.php";
+require_once "../inc/funcoes-noticias-to-feliz.php";
 require_once "../inc/cabecalho-admin.php";
 
 
