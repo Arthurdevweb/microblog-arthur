@@ -23,11 +23,11 @@ mysqli_set_charset($conexao, "utf8");
 if(!$conexao){
     //PARE a aplicação e mostre uma mensagem de erro
     die("deu ruim:".mysqli_connect_error());
-} else {
+} /* else {
     //Senão, a conexão foi feita com sucesso
     echo "Conectado";
 }
-
+ */
 
 
 

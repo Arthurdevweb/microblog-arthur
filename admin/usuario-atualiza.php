@@ -1,40 +1,43 @@
-<?php 
+<?php // usuario-atualiza.php
 require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
 
-$id = $_GET['id'];
+// Pegando o valor do parâmetro id vindo da URL
+$id = $_GET['id']; 
 
-//Chamando a função e aguardando o retorno dela
+// Chamando a função e guardando o retorno dela
 $usuario = lerUmUsuario($conexao, $id);
 
-// verificando se o formulário foi acionado
+// Verificando se o formulário foi acionado
 if(isset($_POST['atualizar'])){
-	
 	// Capturando os dados
 	$nome = $_POST['nome'];
 	$email = $_POST['email'];
 	$tipo = $_POST['tipo'];
 
-
 	/* Lógica para a senha
-	Se o campo senha estiver vazio ou se a senha digitada for igual a senha que ja existe no banco de dados,então significa que o usuario NÃO ALTEROU A SENHA. Portanto, devemos MANTER a senha existente*/
-
+	Se o campo senha estiver vazio OU se a senha digitada
+	for igual à senha que já existe no banco de dados, então
+	significa que o usuário NÃO ALTEROU A SENHA. Portanto,
+	devemos MANTER a senha existente. */
 	if( empty($_POST['senha']) || 
-		password_verify($_POST['senha'], $usuario['senha'])) {
-		$senha = $usuario['senha']; // Mantemos a mesma
-
+		password_verify($_POST['senha'], $usuario['senha'] ) ) {
+		
+		$senha = $usuario['senha']; // mantemos a mesma
 	} else {
-	/* Caso contrário, pegaremos a senha nova digitada e a codoficamos antes de mandar para o banco de dados */
+		/* Caso contrário, pegaremos a senha nova digitada
+		e a CODIFICAMOS antes de mandar para o banco. */
 		$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 	}
 
 	// Chamamos a função e passamos os dados
 	atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo);
 
-	//Redirecionamento para a página de usuarios
-	header("location:usuarios.php")
+	// Redirecionamos para a página de usuarios
+	header("location:usuarios.php");
 }
 ?>
+
 <div class="row">
 	<article class="col-12 bg-white rounded shadow my-1 py-4">
 		
@@ -63,16 +66,17 @@ if(isset($_POST['atualizar'])){
 				<label class="form-label" for="tipo">Tipo:</label>
 				<select class="form-select" name="tipo" id="tipo" required>
 					<option value=""></option>
-					
-					
+
+
 					<option 
-					<?php if($usuario["tipo"] === "editor") echo "selected";?>
+					<?php if($usuario["tipo"] === "editor") echo "selected"; ?>
 					value="editor">Editor</option>
-					
-					
+
 					<option 
-					<?php if($usuario["tipo"] === "admin") echo "selected";?>
+					<?php if($usuario["tipo"] === "admin") echo "selected"; ?>
 					value="admin">Administrador</option>
+
+
 				</select>
 			</div>
 			
