@@ -1,5 +1,12 @@
 <?php 
+require "inc/funcoes-noticias.php"; 
 require "inc/cabecalho.php"; 
+
+$listaDeNoticias = lerTodasAsNoticias($conexao);
+
+echo "<pre>";
+var_dump($listaDeNoticias);
+echo "</pre>"
 ?>  
 
 

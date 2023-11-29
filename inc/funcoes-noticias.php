@@ -1,6 +1,7 @@
 <?php
 require "conecta.php";
 
+
 /* Usada em noticia-insere.php */
 function inserirNoticia($conexao, $titulo, $texto, 
     $resumo, $nomeImagem, $usuarioId){
@@ -156,7 +157,13 @@ function excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario){
 
 /* Usada em index.php */
 function lerTodasAsNoticias($conexao){
-    
+    $sql = "SELECT titulo, resumo, imagem, id
+            FROM noticias ORDER BY data DESC";
+
+    $resultado = mysqli_query($conexao, $sql)
+                or die(mysqli_error($conexao));
+
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
