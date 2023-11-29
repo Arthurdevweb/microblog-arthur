@@ -160,12 +160,9 @@ function lerTodasAsNoticias($conexao){
     $sql = "SELECT titulo, resumo, imagem, id
             FROM noticias ORDER BY data DESC";
 
-    $resultado = mysqli_query($conexao, $sql)
-                or die(mysqli_error($conexao));
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 } // fim lerTodasAsNoticias
 
