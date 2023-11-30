@@ -1,5 +1,6 @@
 <?php
 require "conecta.php";
+require "inc/funcoes-noticias-to-feliz.php"; 
 
 /* Usada em noticia-insere.php */
 function inserirNoticia($conexao, $titulo, $texto, $resumo, $nomeImagem, $usuarioId){
@@ -109,7 +110,7 @@ function lerTodasAsNoticias($conexao){
 
 /* Usada em noticia.php */
 function lerDetalhes($conexao){
-    
+    $sql = 
 
     // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
