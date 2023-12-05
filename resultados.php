@@ -3,7 +3,7 @@ require "inc/cabecalho.php";
 require "inc/funcoes-noticias.php";
 
 
-$termoDigitado = $_GET['busca'];
+$termoDigitado = mysqli_real_escape_string($conexao, $_GET['busca']);
 
 $resultadoDaBusca = busca($conexao, $termoDigitado);
 
